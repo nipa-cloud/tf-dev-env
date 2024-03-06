@@ -50,7 +50,7 @@ Create a WORKSPACE directory (build artifacts will be put there) and ```export W
 ### 2. Download tf-dev-env and fetch sources
 
 ``` bash
-git clone http://github.com/tungstenfabric/tf-dev-env
+git clone http://github.com/opensdn-io/tf-dev-env
 ```
 
 Prepare the build container and fetch TF sources:
@@ -61,7 +61,7 @@ tf-dev-env/run.sh
 
 Note: The sources are fetched into the directory $WORKSPACE/contrail.
 The [repo tool](https://storage.googleapis.com/git-repo-downloads/repo) is used for fetching.
-The directory structure corresponds to [default.xml](https://github.com/tungstenfabric/tf-vnc/blob/master/default.xml)
+The directory structure corresponds to [default.xml](https://github.com/opensdn-io/tf-vnc/blob/master/default.xml)
 
 ### 3. Make changes (if any needed)
 
@@ -69,7 +69,7 @@ Make required changes in sources fetched to contrail directory. For example, fet
 
 ``` bash
 cd contrail/controller
-git fetch "https://gerrit.tungsten.io/tungstenfabric/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
+git fetch "https://gerrit.tungsten.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
 cd ../../
 ```
 
@@ -301,9 +301,9 @@ IMPORTANT: some of the parts and pieces are still under construction
 
 Full TF dev suite consists of:
 
-- [tf-dev-env](https://github.com/tungstenfabric/tf-dev-env) - develop and build TF
-- [tf-devstack](https://github.com/tungstenfabric/tf-devstack) - deploy TF
-- [tf-dev-test](https://github.com/tungstenfabric/tf-dev-test) - test deployed TF
+- [tf-dev-env](https://github.com/opensdn-io/tf-dev-env) - develop and build TF
+- [tf-devstack](https://github.com/opensdn-io/tf-devstack) - deploy TF
+- [tf-dev-test](https://github.com/opensdn-io/tf-dev-test) - test deployed TF
 
 Each of these tools can be used separately or in conjunction with the other two. They are supposed to be invoked in the sequence they were listed and produce environment (conf files and variables) seamlessly consumable by the next tool.
 
@@ -338,7 +338,7 @@ sudo yum install -y git
 Clone tf-dev-env:
 
 ``` bash
-git clone http://github.com/tungstenfabric/tf-dev-env
+git clone http://github.com/opensdn-io/tf-dev-env
 ```
 Switch to a branch other than master (if necessary):
 
@@ -356,7 +356,7 @@ Make required changes in sources fetched to contrail directory. For example, fet
 
 ``` bash
 cd contrail/controller
-git fetch "https://gerrit.tungsten.io/tungstenfabric/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
+git fetch "https://gerrit.tungsten.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
 cd ../../
 ```
 
@@ -371,7 +371,7 @@ tf-dev-env/run.sh build
 Clone tf-devstack:
 
 ``` bash
-git clone http://github.com/tungstenfabric/tf-devstack
+git clone http://github.com/opensdn-io/tf-devstack
 ```
 
 Deploy TF by means of k8s manifests, for example:
@@ -405,7 +405,7 @@ tf-devstack/k8s_manifests/cleanup.sh tf
 Clone tf-dev-test:
 
 ``` bash
-git clone http://github.com/tungstenfabric/tf-dev-test
+git clone http://github.com/opensdn-io/tf-dev-test
 ```
 
 Test the deployment by smoke tests, for example:
@@ -436,7 +436,7 @@ sudo yum install -y git
 Clone tf-devstack:
 
 ``` bash
-git clone http://github.com/tungstenfabric/tf-devstack
+git clone http://github.com/opensdn-io/tf-devstack
 ```
 
 Deploy TF by means of k8s manifests, for example:
