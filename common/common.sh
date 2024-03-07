@@ -85,8 +85,8 @@ export CONTRAIL_CONTAINER_TAG=${CONTRAIL_CONTAINER_TAG:-'dev'}
 # It's determined automatically taken from http://nexus.opensdn.io:8082/frozen/tag during fetch stage
 export FROZEN_TAG=""
 # note: there is spaces available in names below
-export VENDOR_NAME=${VENDOR_NAME:-"TungstenFabric"}
-export VENDOR_DOMAIN=${VENDOR_DOMAIN:-"io.tungsten"}
+export VENDOR_NAME=${VENDOR_NAME:-"OpenSDN-IO"}
+export VENDOR_DOMAIN=${VENDOR_DOMAIN:-"io.opensdn"}
 
 # Contrail repo branches options
 export CONTRAIL_BRANCH=${CONTRAIL_BRANCH:-${GERRIT_BRANCH:-'master'}}

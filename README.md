@@ -219,11 +219,11 @@ scons # ( or "scons test" etc)
 ```
 
 NOTE:
-Above example build whole TungstenFabric project with default kernel headers and those
+Above example build whole OpenSDN project with default kernel headers and those
 are headers for running kernel (`uname -r`). If you want to customize your manual build and
 use i.e newer kernel header take a look at below examples.
 
-In case you want to compile TungstenFabric with latest or another custom kernel headers installed
+In case you want to compile OpenSDN with latest or another custom kernel headers installed
 in `tf-dev-sandbox` container, then you have to run scons with extra arguments:
 
 ``` bash
@@ -450,9 +450,6 @@ Or if you want to deploy with the most recent sources from master use:
 ``` bash
 tf-devstack/k8s_manifests/run.sh master
 ```
-
-[Slack]: https://tungstenfabric.slack.com/messages/C0DQ23SJF/
-[Google Group]: https://groups.google.com/forum/#!forum/tungsten-dev
 
 ## Notes
 
