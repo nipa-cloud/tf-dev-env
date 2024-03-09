@@ -65,6 +65,14 @@ function install_docker_rhel_8() {
   sed -i 's/.*image_build_format.*/image_build_format = "docker"/g' /usr/share/containers/containers.conf
 }
 
+function install_docker_rocky() {
+  which docker && return
+  dnf install -y dnf-utils device-mapper-persistent-data lvm2
+  dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  retry dnf install -y docker-ce device-mapper-libs device-mapper-event-libs
+  systemctl start docker
+}
+
 declare -A install_docker_rhel=(
   ['7.8']=install_docker_rhel_7
   ['7.9']=install_docker_rhel_7
@@ -180,9 +188,10 @@ function set_docker_mtu() {
       ;;
   esac
 }
+
 function restart_docker() {
   echo "INFO: restart docker"
-  if [ x"$DISTRO" == x"centos" ] ; then
+  if [[ x"$DISTRO" == x"centos" || x"$DISTRO" == x"rocky" ]] ; then
     systemctl restart docker
   elif [ x"$DISTRO" == x"rhel" ] ; then
     if [ ! "${DISTRO_VER}" =~ "8." ]; then
@@ -213,6 +222,9 @@ if ! which docker >/dev/null 2>&1 ; then
     ${install_docker_rhel[$DISTRO_VER]}
   elif [ x"$DISTRO" == x"ubuntu" ]; then
     install_docker_ubuntu
+  elif [ x"$DISTRO" == x"rocky" ]; then
+    systemctl stop firewalld || true
+    install_docker_rocky
   fi
 else
   echo "INFO: docker installed: $(docker --version)"

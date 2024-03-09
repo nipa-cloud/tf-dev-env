@@ -92,6 +92,11 @@ function install_prerequisites_rhel() {
   install_prerequisites_centos "$pkgs"
 }
 
+function install_prerequisites_rocky() {
+  local pkgs="jq lsof python3 python3-pip"
+  mysudo dnf install -y $pkgs
+}
+
 function install_prerequisites_ubuntu() {
   local pkgs=""
   which lsof || pkgs+=" lsof"
