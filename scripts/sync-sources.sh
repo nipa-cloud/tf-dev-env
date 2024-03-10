@@ -23,29 +23,20 @@ repo_sync_defauilts='--no-tags --no-clone-bundle -q '
 [ -n "$DEBUG" ] && repo_init_defauilts+=' -q' && repo_sync_defauilts+=' -q'
 
 REPO_INIT_MANIFEST_URL=${REPO_INIT_MANIFEST_URL:-"https://github.com/opensdn-io/tf-vnc"}
-VNC_ORGANIZATION=${VNC_ORGANIZATION:-"opensdn"}
+VNC_ORGANIZATION=${VNC_ORGANIZATION:-"opensdn-io"}
 VNC_REPO="tf-vnc"
 if [[ -n "$CONTRAIL_BRANCH" ]] ; then
   echo "INFO: CONTRAIL_BRANCH is not empty - $CONTRAIL_BRANCH"
   # check branch in tf-vnc, then in contrail-vnc and then fallback to master branch in tf-vnc
   if [[ $(curl -s https://api.github.com/repos/opensdn-io/tf-vnc/branches/${CONTRAIL_BRANCH} | jq -r '.name') != "${CONTRAIL_BRANCH}" ]]; then
-    if [[ $(curl -s https://api.github.com/repos/Juniper/contrail-vnc/branches/${CONTRAIL_BRANCH} | jq -r '.name') == "${CONTRAIL_BRANCH}" ]]; then
-      echo "INFO: using Juniper/contrail-vnc"
-      REPO_INIT_MANIFEST_URL="https://github.com/Juniper/contrail-vnc"
-      VNC_ORGANIZATION="Juniper"
-      VNC_REPO="contrail-vnc"
-    else
-      # reset branch to master if no such branch in both vnc: openshift-ansible,
-      # contrail-tripleo-puppet, contrail-trieplo-heat-templates do not
-      # depend on contrail branch and they are openstack depended.
-      echo "INFO: There is no $CONTRAIL_BRANCH branch in tf-vnc or in contrail-vnc, use master for tf-vnc"
-      echo "INFO: opensdn-io/tf-vnc answer"
-      curl -s https://api.github.com/repos/opensdn-io/tf-vnc/branches/${CONTRAIL_BRANCH}
-      echo "INFO: Juniper/contrail-vnc asnwer"
-      curl -s https://api.github.com/repos/Juniper/contrail-vnc/branches/${CONTRAIL_BRANCH}
-      CONTRAIL_BRANCH="master"
-      GERRIT_BRANCH=""
-    fi
+    # reset branch to master if no such branch in vnc.
+    # openshift-ansible, contrail-tripleo-puppet, contrail-trieplo-heat-templates do not
+    # depend on contrail branch and they are openstack depended.
+    echo "INFO: There is no $CONTRAIL_BRANCH branch in tf-vnc, use master"
+    echo "INFO: opensdn-io/tf-vnc answer"
+    curl -s https://api.github.com/repos/opensdn-io/tf-vnc/branches/${CONTRAIL_BRANCH}
+    CONTRAIL_BRANCH="master"
+    GERRIT_BRANCH=""
   else
     echo "INFO: using ${REPO_INIT_MANIFEST_URL}"
   fi
