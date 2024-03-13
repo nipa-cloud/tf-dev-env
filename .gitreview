@@ -6,7 +6,7 @@
 # Please visit opencontrail.org additional information.
 #
 # e.g. After changes are complete and commited to a local branch, do
-# 'git review' to submit changeset to gerrit.tungsten.io Code Review
+# 'git review' to submit changeset to gerrit.opensdn.io Code Review
 # (gerrit) System.
 #
 [gerrit]

@@ -59,7 +59,7 @@ fi
 export FROZEN_REGISTRY=${FROZEN_REGISTRY:-"nexus.opensdn.io:5101"}
 
 # Gerrit URL is used when patchsets-info.json is provided
-export GERRIT_URL=${GERRIT_URL:-https://gerrit.tungsten.io/r}
+export GERRIT_URL=${GERRIT_URL:-https://gerrit.opensdn.io/r}
 
 export RPM_REPO_IP='localhost'
 export RPM_REPO_PORT='6667'

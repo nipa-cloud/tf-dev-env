@@ -6,7 +6,7 @@ USER = "root"
 GROUP = "root"
 HOME_DIR = "/root"
 DEV_ENV_DIR = "#{HOME_DIR}/tf-dev-env"
-REPOS_DIR = "#{HOME_DIR}/src/gerrit.tungsten.io/opensdn-io/"
+REPOS_DIR = "#{HOME_DIR}/src/gerrit.opensdn.io/opensdn-io/"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 

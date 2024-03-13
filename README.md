@@ -69,7 +69,7 @@ Make required changes in sources fetched to contrail directory. For example, fet
 
 ``` bash
 cd contrail/controller
-git fetch "https://gerrit.tungsten.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
+git fetch "https://gerrit.opensdn.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
 cd ../../
 ```
 
@@ -356,7 +356,7 @@ Make required changes in sources fetched to contrail directory. For example, fet
 
 ``` bash
 cd contrail/controller
-git fetch "https://gerrit.tungsten.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
+git fetch "https://gerrit.opensdn.io/opensdn-io/tf-controller" refs/changes/..... && git checkout FETCH_HEAD
 cd ../../
 ```
 
