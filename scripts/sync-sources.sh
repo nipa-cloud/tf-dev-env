@@ -22,13 +22,13 @@ repo_init_defauilts='--repo-branch=repo-1'
 repo_sync_defauilts='--no-tags --no-clone-bundle -q '
 [ -n "$DEBUG" ] && repo_init_defauilts+=' -q' && repo_sync_defauilts+=' -q'
 
-REPO_INIT_MANIFEST_URL=${REPO_INIT_MANIFEST_URL:-"https://github.com/opensdn-io/tf-vnc"}
+REPO_INIT_MANIFEST_URL=${REPO_INIT_MANIFEST_URL:-"https://github.com/nipa-cloud/tf-vnc"}
 VNC_ORGANIZATION=${VNC_ORGANIZATION:-"opensdn-io"}
 VNC_REPO="tf-vnc"
 if [[ -n "$CONTRAIL_BRANCH" ]] ; then
   echo "INFO: CONTRAIL_BRANCH is not empty - $CONTRAIL_BRANCH"
   # check branch in tf-vnc, then in contrail-vnc and then fallback to master branch in tf-vnc
-  if [[ $(curl -s https://api.github.com/repos/opensdn-io/tf-vnc/branches/${CONTRAIL_BRANCH} | jq -r '.name') != "${CONTRAIL_BRANCH}" ]]; then
+  if [[ $(curl -s https://api.github.com/repos/nipa-cloud/tf-vnc/branches/${CONTRAIL_BRANCH} | jq -r '.name') != "${CONTRAIL_BRANCH}" ]]; then
     # reset branch to master if no such branch in vnc.
     # openshift-ansible, contrail-tripleo-puppet, contrail-trieplo-heat-templates do not
     # depend on contrail branch and they are openstack depended.
